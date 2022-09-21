@@ -3,11 +3,14 @@ import Todo from "./Componenets/Todo.jsx";
 import Title from "./Componenets/Title.jsx";
 import Modal from "./Componenets/Modal.jsx";
 import React, { useState } from "react";
+import Counter from "./Componenets/Counter.jsx";
 
 
 function App() {
-  const [showModal, setShowModal] = useState(true)
-  setShowModal(false)
+
+  return <Counter />
+ 
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <div className="App">
@@ -19,7 +22,7 @@ function App() {
             console.log(event.target.value);
           }}
         />
-        <button>Add Todo</button>
+        <button onClick={() => setShowModal(true)}>Add Todo</button>
       </div>
       <div className="todo__wrapper">
         <Todo title="Finish Frontend Simplified"></Todo>
