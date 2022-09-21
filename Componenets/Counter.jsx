@@ -1,32 +1,26 @@
 import React, { useState } from "react";
 
 function Counter() {
-    const [cart, setCart] = useState({
-        item: 'apple', quantity: 0,
-    });
-    
-    function addApple() {
-        // This it how to use objects in react...
-        // 1. Use a callback to get the previous value
-        // 2. Spread out all the properties of the prev state
-        // 3. Only change the property that you need to change
-        setCart(prevCart => ({
-            ...prevCart, quantity: prevCart.quantity + 1,
-        }))
+    const [arr, setArr] = useState([])
+    // - Obejects = setObj(newObj); setObj(prevObj => ({...prevObj, quantity: prevObj.quantity + 1}))
+    // - Arrays = setArr(newArr); setArr(prevArr => ({...prevArr, 5}))
+    function addPlus() {
+        setArr(prevArr => [ ...prevArr, '+'])
     }
 
-    function removeApple() {
-        setCart(prevCart => ({
-            ...prevCart, quantity: prevCart.quantity - 1,
-        }))
+    function addMinus() {
+        setArr(prevArr => [ ...prevArr, '-'])
     }
-    
+
+    // - Numbers = setNum(10); to add 10 from previous number USE a callback; setNum(prevNum => prevNum + 10)
+    // - Booleans = setBool(true); to set it top false use '!' MEANING OPPOSITE; setBool(prevBool => !prevBool)
+    // - Strings = setStr('Frontend'); setStr(prevStr => prevStr = 'Simplified')
+
   return (
     <div>
-      <button onClick={removeApple} >-</button>
-      {cart.quantity}
-      {cart.item}
-      <button onClick={addApple} >+</button>
+      <button onClick={addMinus} >-</button>
+      <button onClick={addPlus} >+</button>
+      {arr.toString()}
     </div>
   );
 }
